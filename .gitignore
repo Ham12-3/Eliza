@@ -10,3 +10,7 @@ scripts/.osm-cache/
 
 # windows crash dumps
 *.stackdump
+
+# next.js
+.next/
+next-env.d.ts
