@@ -1,0 +1,202 @@
+:root {
+  --bg: #14171c;
+  --panel: #1b1f24;
+  --line: #7b4fb0;
+  --line-bright: #a45bd6;
+  --text: #e6e8ea;
+  --muted: #9aa0a6;
+  --good: #2e7d4f;
+  --bad: #b3402f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+#topbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  background: rgba(20, 23, 28, 0.92);
+  border-bottom: 1px solid #2a2f36;
+  backdrop-filter: blur(6px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand h1 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 600;
+}
+.brand .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--line-bright);
+  box-shadow: 0 0 10px var(--line-bright);
+}
+
+#status-banner {
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+#status-banner.good {
+  background: rgba(46, 125, 79, 0.18);
+  color: #7ee0a6;
+}
+#status-banner.bad {
+  background: rgba(179, 64, 47, 0.18);
+  color: #ff9c8a;
+}
+
+.meta {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--muted);
+}
+.meta .sep {
+  margin: 0 6px;
+}
+
+#to-station {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  border: 1px solid #3a3050;
+  background: rgba(123, 79, 176, 0.18);
+  padding: 5px 11px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+#to-station:hover {
+  border-color: var(--line-bright);
+  background: rgba(164, 91, 214, 0.28);
+}
+
+#map {
+  position: absolute;
+  inset: 52px 0 28px 0;
+  background: #0f1115;
+}
+
+/* anchored popup label (rounded speech bubble beside the clicked thing) */
+.eliz-popup .maplibregl-popup-content {
+  background: rgba(27, 31, 36, 0.97);
+  color: var(--text);
+  border: 1px solid #3a3050;
+  border-radius: 14px;
+  padding: 11px 13px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+  font-size: 13px;
+  animation: pop 0.14s ease;
+}
+@keyframes pop {
+  from { opacity: 0; transform: translateY(4px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+/* the little tail, coloured to match the bubble on every anchor side */
+.eliz-popup.maplibregl-popup-anchor-bottom .maplibregl-popup-tip { border-top-color: rgba(27, 31, 36, 0.97); }
+.eliz-popup.maplibregl-popup-anchor-top .maplibregl-popup-tip { border-bottom-color: rgba(27, 31, 36, 0.97); }
+.eliz-popup.maplibregl-popup-anchor-left .maplibregl-popup-tip { border-right-color: rgba(27, 31, 36, 0.97); }
+.eliz-popup.maplibregl-popup-anchor-right .maplibregl-popup-tip { border-left-color: rgba(27, 31, 36, 0.97); }
+.eliz-popup .maplibregl-popup-close-button {
+  color: var(--muted);
+  font-size: 17px;
+  padding: 0 6px;
+}
+.eliz-popup .maplibregl-popup-close-button:hover {
+  color: var(--text);
+  background: none;
+}
+.lbl-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+  padding-right: 12px;
+}
+.lbl-sub {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 2px 0 4px;
+}
+.lbl-note {
+  margin-top: 7px;
+  padding-top: 6px;
+  border-top: 1px solid #2a2f36;
+  color: var(--muted);
+  font-size: 11px;
+}
+.kv {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 2px 0;
+  color: var(--muted);
+}
+.kv b {
+  color: var(--text);
+  font-weight: 600;
+  text-align: right;
+}
+.arr {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 3px 0;
+  border-top: 1px solid #23282e;
+}
+.arr-eta {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--text);
+}
+
+#disclaimer {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 1000;
+  padding: 6px 16px;
+  font-size: 12px;
+  color: var(--muted);
+  background: rgba(20, 23, 28, 0.92);
+  border-top: 1px solid #2a2f36;
+  text-align: center;
+}
+
+/* MapLibre */
+.maplibregl-canvas {
+  outline: none;
+}
+.maplibregl-ctrl-group {
+  background: #1b1f24;
+  border: 1px solid #2a2f36;
+}
+.maplibregl-ctrl button {
+  filter: invert(1) hue-rotate(180deg);
+}
+.maplibregl-ctrl-attrib {
+  background: rgba(20, 23, 28, 0.7) !important;
+}
+.maplibregl-ctrl-attrib a {
+  color: #9aa0a6;
+}

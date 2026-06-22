@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elizabeth line — station view</title>
+    <link rel="stylesheet" href="/css/station.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="scene"></div>
+
+    <header id="bar">
+      <div class="brand"><span class="dot"></span><h1>Elizabeth line — station view</h1></div>
+      <label class="picker">
+        Station
+        <select id="station-select"></select>
+      </label>
+      <div class="spacer"></div>
+      <div id="clock">--:--</div>
+      <a id="to-map" href="/">map ↗</a>
+    </header>
+
+    <aside id="board">
+      <div class="board-title">Next trains</div>
+      <div id="board-rows"><div class="muted">Loading…</div></div>
+    </aside>
+
+    <footer id="hint">
+      Drag to look around · scroll to zoom · trains arrive in real time from live TfL predictions.
+      Architecture is a representative Elizabeth-line shed (not a per-station replica).
+    </footer>
+
+    <div id="loading">Building station…</div>
+
+    <script type="module" src="/js/station.js"></script>
+  </body>
+</html>

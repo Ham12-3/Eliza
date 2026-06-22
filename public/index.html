@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elizabeth line — live 3D (estimated)</title>
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <header id="topbar">
+      <div class="brand">
+        <span class="dot"></span>
+        <h1>Elizabeth line — live 3D</h1>
+      </div>
+      <div id="status-banner" class="good">Loading status…</div>
+      <div class="meta">
+        <span id="stats">—</span>
+        <span class="sep">·</span>
+        <span><strong id="train-count">0</strong> trains</span>
+      </div>
+      <a id="to-station" href="/station.html">station view ↗</a>
+    </header>
+
+    <div id="map"></div>
+
+    <footer id="disclaimer">
+      ⚠️ Train positions are <strong>estimated by interpolation</strong> from TfL arrival
+      predictions (not GPS) and move along real OpenStreetMap track geometry. Drag to rotate ·
+      right-drag / ctrl-drag to tilt.
+    </footer>
+
+    <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/deck.gl@9.0.34/dist.min.js"></script>
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>
